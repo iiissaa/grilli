@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grilli & Ravintola Venla ja Iisa</title>
+	<link rel="icon" type="image/x-icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmqBKHSmi0ufMEIKoBHDruNNGQ1T0DJCMGXQ&s">
+ 
+  <style>
+       :root {
+      --primary: #e94e1b;
+      --dark: #333;
+      --bg: #fffaf5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: url('https://www.tastingtable.com/img/gallery/9-mistakes-youre-making-when-eating-at-a-korean-bbq-restaurant/intro-1730381482.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+      height: 80vh;
+      background-attachment: fixed;
+      background-position: center;
+    }
+
+    header h1 {
+      font-size: 4vw;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+    }
+
+    header p {
+      font-size: 2.5vw;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .menu-toggle {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 24px;
+      cursor: pointer;
+      z-index: 20;
+      display: none;
+    }
+
+    .menu-toggle span {
+      height: 4px;
+      width: 100%;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    nav {
+      background-color: var(--dark);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section h2 {
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .order-button {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      text-decoration: none;
+      margin-top: 2rem;
+      transition: background-color 0.3s ease;
+    }
+
+    section h2 {
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .order-button {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      text-decoration: none;
+      margin-top: 2rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .order-button:hover {
+      background-color: #c93c10;
+    }
+
+    .map-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-top: 2rem;
+    }
+
+    .map-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 12px;
+    }
+
+    footer {
+      background-color: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    footer .footer-content {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      font-size: 1.5rem;
+      border-radius: 50%;
+      color: white;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .social-icons a[href*="facebook"] {
+      background-color: #3b5998;
+    }
+
+    .social-icons a[href*="instagram"] {
+      background: radial-gradient(circle at 30% 30%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    }
+
+    .social-icons a[href*="x"] {
+      background-color: white;
+    }
+	
+	  table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #FF7F00;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+ @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--dark);
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        z-index: 15;
+      }
+
+      nav a {
+        font-size: 1.2rem;
+        text-align: center;
+      }
+
+      nav.show {
+        display: block;
+      }
+
+      body {
+        padding-top: 80px; 
+      }
+    }
+
+    @media (max-width: 480px) {
+      section {
+        padding: 1rem;
+      }
+    }
+	
+  
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Grilli & Ravintola Venla ja Iisa</h1>
+  <p>Parhaat burgerit ja kotiruoat Jyväskylässä</p>
+</header>
+
+<nav>
+  <a href="index.html">Etusivu</a>
+  <a href="menu.html">Menu</a>
+  <a href="https://www.foodora.fi/restaurant/some-esimerkki" target="_blank">Tilaa verkossa</a>
+  <a href="#yhteystiedot">Yhteystiedot</a>
+</nav>
+
+<section id="menu">
+  <h2>Ruokalistamme</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tuote</th>
+        <th>Kuvaus</th>
+        <th>Hinta (€)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Makkaraperunat</td>
+        <td>Grillimakkaraa & ranskalaisia</td>
+        <td>6,50</td>
+      </tr>
+      <tr>
+        <td>Lihapiirakka</td>
+        <td>Täytetty perinteinen lihapiirakka</td>
+        <td>5,00</td>
+      </tr>
+      <tr>
+        <td>Hampurilainen</td>
+        <td>Naudanpihvi, salaatti, majoneesi</td>
+        <td>7,00</td>
+      </tr>
+      <tr>
+        <td>Juustohampurilainen</td>
+        <td>Hampurilainen + cheddarjuusto</td>
+        <td>7,50</td>
+      </tr>
+      <tr>
+        <td>Kanafileburger</td>
+        <td>Paneroitu kanafilee & mausteet</td>
+        <td>8,00</td>
+      </tr>
+      <tr>
+        <td>Kasvishampurilainen</td>
+        <td>Kasvispihvi ja raikkaat täytteet</td>
+        <td>7,00</td>
+      </tr>
+      <tr>
+        <td>Ranskalaiset</td>
+        <td>Rapea perinteinen annos</td>
+        <td>3,50</td>
+      </tr>
+      <tr>
+        <td>Nuggetit (6 kpl)</td>
+        <td>Kananugetteja ja dippi</td>
+        <td>4,00</td>
+      </tr>
+      <tr>
+        <td>Limu 0,5 l</td>
+        <td>Useita vaihtoehtoja</td>
+        <td>2,50</td>
+      </tr>
+      <tr>
+        <td>Vesi 0,5 l</td>
+        <td>Pullotettu lähdevesi</td>
+        <td>2,00</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+<footer id="yhteystiedot">
+  <div class="footer-content">
+    <h3>Yhteystiedot</h3>
+    <p><strong>Osoite:</strong> <a href="https://maps.app.goo.gl/HMdk42MQ7Fg2MEh2A">Jyväskylä</a></p>
+    <p><strong>Puhelin:</strong> <a href="tel:+358401234567">040 123 4567</a></p>
+    <p><strong>Sähköposti:</strong> <a href="mailto:info@esimerkki.fi">info@esimerkki.fi</a></p>
+    <p><strong>Aukioloajat:</strong> Ma–Pe 10–21, La–Su 11–23</p>
+    <div class="social-icons">
+          <a href="https://www.facebook.com" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" width="32" height="32" />
+        </a>
+        <a href="https://www.instagram.com" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="32" height="32" />
+        </a>
+        <a href="https://x.com/?lang=fi" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/250px-X_logo_2023.svg.png" alt="X" width="32" height="32" />
+        </a>
+    </div>
+    <p style="margin-top: 1.5rem;">&copy; 2025 Grilli & Ravintola Venla ja Iisa</p>
+  </div>
+  </footer>
+  <script>
+  function toggleMenu() {
+    const nav = document.getElementById('navbar');
+    nav.classList.toggle('show');
+  }
+</script>
+</footer>
+
+</body>
+</html>
